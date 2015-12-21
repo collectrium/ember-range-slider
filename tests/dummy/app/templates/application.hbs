@@ -1,0 +1,88 @@
+<h1 id="title">ember-range-slider</h1>
+
+{{outlet}}
+
+<div class='example'>
+  <p>Example using "rangeChanging" action, which fires continuously as sliders move.</p>
+  {{code-snippet name='example1.hbs'}}
+  {{!-- BEGIN-SNIPPET example1 --}}
+  {{ember-range-slider
+    min=1200
+    max=8000
+    start=example1RangeStart
+    end=example1RangeEnd
+    rangeChanging=(action 'example1RangeSliderChanging')
+  }}
+  {{!-- END-SNIPPET --}}
+  <ul>
+    <li>start: {{example1RangeStart}}</li>
+    <li>end: {{example1RangeEnd}}</li>
+  </ul>
+</div>
+
+<div class='example'>
+  <p>Example using "rangeChanged" action, which fires once slider is released.
+     This example also demonstrated the "isSlidingChanged" action, which fires
+     when the user begins sliding with false, and when then complete sliding,
+     with true.</p>
+  {{code-snippet name='example2.hbs'}}
+  {{!-- BEGIN-SNIPPET example2 --}}
+  {{ember-range-slider
+    min=1200
+    max=8000
+    start=example2RangeStart
+    end=example2RangeEnd
+    rangeChanged=(action 'example2RangeSliderChanged')
+    isSlidingChanged=(action (mut example2IsSliding))
+  }}
+  {{!-- END-SNIPPET --}}
+  <ul>
+    <li>start: {{example2RangeStart}}</li>
+    <li>end: {{example2RangeEnd}}</li>
+    <li>isSliding: {{example2IsSliding}}</li>
+  </ul>
+</div>
+
+<div class='example'>
+  <p>Example of supplying your own component for the slider handles.</p>
+  {{code-snippet name='example3.hbs'}}
+  {{!-- BEGIN-SNIPPET example3 --}}
+  {{ember-range-slider
+    min=0
+    max=100
+    start=example3RangeStart
+    end=example3RangeEnd
+    startHandleComponentKey="custom-start-handle"
+    endHandleComponentKey="custom-end-handle"
+    rangeChanging=(action 'example3RangeSliderChanging')
+  }}
+  {{!-- END-SNIPPET --}}
+  <ul>
+    <li>start: {{example3RangeStart}}</li>
+    <li>end: {{example3RangeEnd}}</li>
+  </ul>
+</div>
+
+<div class='example'>
+  <p>Example of text fields working in concert with slider. Press enter after editing a text field value.</p>
+  {{code-snippet name='example4.hbs'}}
+  {{!-- BEGIN-SNIPPET example4 --}}
+  {{ember-range-slider
+    min=1200
+    max=8000
+    start=example4RangeStart
+    end=example4RangeEnd
+    rangeChanging=(action 'example4RangeSliderChanging')
+  }}
+  <div>
+    {{one-way-input value=example4RangeStart placeholder=1200 onenter=(action 'example4UpdateStart')}}
+    -
+    {{one-way-input value=example4RangeEnd placeholder=8000 onenter=(action 'example4UpdateEnd')}}
+  </div>
+
+  {{!-- END-SNIPPET --}}
+  <ul>
+    <li>start: {{example4RangeStart}}</li>
+    <li>end: {{example4RangeEnd}}</li>
+  </ul>
+</div>
