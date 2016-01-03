@@ -2,7 +2,7 @@
 
 This ember-cli addon provides a horizontal slider component with two handles that allows for visually selecting a range from within a specified min and max.
 
-[TODO: Animated GIF here]
+![Animated GIF of ember-range-slider in action](http://f.cl.ly/items/2E3B3d44330C0S3J0H31/range-slider.gif)
 
 Supported interactions include pressing (or touching) and dragging either handle, as well as tapping on the slider track to adjust the nearest slider handle to the new location.
 
