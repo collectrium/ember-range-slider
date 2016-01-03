@@ -1,5 +1,11 @@
 {
   "predef": [
+    "triggerTap",
+    "rawTap",
+    "rawPan",
+    "rawMouseDown",
+    "rawMouseUp",
+    "rawMouseMove",
     "document",
     "window",
     "location",

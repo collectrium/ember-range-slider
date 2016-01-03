@@ -235,10 +235,6 @@ export default Ember.Component.extend({
           } else {
             this.set('startPercentage', tappablePercent);
           }
-          this.sendAction('rangeChanging', {
-            start: this.get('start'),
-            end: this.get('end')
-          });
           this.sendRangeChanged();
         });
         return;

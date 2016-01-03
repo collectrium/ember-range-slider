@@ -54,6 +54,8 @@ The `isSlidingChanged` action is fired with `true` as the user begins sliding a 
 * `ember test`
 * `ember test --server`
 
+*NOTE:* Tests currently run successfully in-browser, but not headless in PhantomJS due to an error with `new MouseEvent`. It would be fantastic to fix this.
+
 ### Running the dummy app
 
 * `ember server`
