@@ -86,3 +86,22 @@
     <li>end: {{example4RangeEnd}}</li>
   </ul>
 </div>
+
+<div class='example example-5'>
+  <p>You can specify a 'scale' property to set a non-linear scale.</p>
+  {{code-snippet name='example1.hbs'}}
+  {{!-- BEGIN-SNIPPET example1 --}}
+  {{ember-range-slider
+    min=-1000000
+    max=1000000
+    start=example5RangeStart
+    end=example5RangeEnd
+    scale='logarithmic'
+    rangeChanging=(action 'example5RangeSliderChanging')
+  }}
+  {{!-- END-SNIPPET --}}
+  <ul>
+    <li>start: {{example5RangeStart}}</li>
+    <li>end: {{example5RangeEnd}}</li>
+  </ul>
+</div>

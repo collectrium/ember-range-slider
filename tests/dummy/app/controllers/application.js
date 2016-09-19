@@ -14,6 +14,9 @@ export default Ember.Controller.extend({
   example4RangeStart: 3000,
   example4RangeEnd: 6000,
 
+  example5RangeStart: -100,
+  example5RangeEnd: 100000,
+
   actions: {
     example1RangeSliderChanging(range) {
       this.set('example1RangeStart', range.start);
@@ -30,6 +33,10 @@ export default Ember.Controller.extend({
     example4RangeSliderChanging(range) {
       this.set('example4RangeStart', Math.round(range.start));
       this.set('example4RangeEnd', Math.round(range.end));
+    },
+    example5RangeSliderChanging(range) {
+      this.set('example5RangeStart', Math.round(range.start));
+      this.set('example5RangeEnd', Math.round(range.end));
     },
     example4UpdateStart(val) {
       this.set('example4RangeStart', Math.min(Math.max(1200, val), this.get('example4RangeEnd')));
