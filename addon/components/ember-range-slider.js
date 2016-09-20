@@ -158,17 +158,17 @@ export default Ember.Component.extend({
    * for this component. If you subclass and provide your own template with
    * different class names, override these methods.
    */
-   getSliderHandleFromEventTarget(eventTarget) {
-     return Ember.$(eventTarget).closest(`.${this.get('handleClassName')}`);
-   },
+  getSliderHandleFromEventTarget(eventTarget) {
+    return Ember.$(eventTarget).closest(`.${this.get('handleClassName')}`);
+  },
 
-   isStartHandle($sliderHandle) {
-     return $sliderHandle.hasClass(this.get('startHandleClassName'));
-   },
+  isStartHandle($sliderHandle) {
+    return $sliderHandle.hasClass(this.get('startHandleClassName'));
+  },
 
-   isEndHandle($sliderHandle) {
-     return $sliderHandle.hasClass(this.get('endHandleClassName'));
-   },
+  isEndHandle($sliderHandle) {
+    return $sliderHandle.hasClass(this.get('endHandleClassName'));
+  },
 
   isSliderBase($element) {
     return $element.hasClass(this.get('baseClassName'));
