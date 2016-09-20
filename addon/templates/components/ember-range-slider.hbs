@@ -1,10 +1,10 @@
-<div class="EmberRangeSlider-base"></div>
-<div class="EmberRangeSlider-active" style={{activeRangeStyle}}></div>
+<div class={{baseClassName}} disabled={{isDisabled}}></div>
+<div class={{activeRegionClassName}} style={{activeRangeStyle}} disabled={{isDisabled}}></div>
 {{component startHandleComponentKey
-            class="EmberRangeSlider-handle EmberRangeSlider-handle--start"
+            class=startHandleFullClassName
             isSliding=isSlidingStartHandle
             style=startHandleStyle}}
 {{component endHandleComponentKey
-            class="EmberRangeSlider-handle EmberRangeSlider-handle--end"
+            class=endHandleFullClassName
             isSliding=isSlidingEndHandle
             style=endHandleStyle}}
