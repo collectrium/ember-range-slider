@@ -22,16 +22,6 @@ export default Ember.Component.extend({
   start: null,
   end: null,
 
-<<<<<<< HEAD
-=======
-  scale: 'linear',
-  scaleStrategies,
-
-  /**
-   *  If true, the second value will be parsed even if selected only one.
-   */
-  forceValueObtaining: false,
-
   isDisabled: false,
 
   baseClassName: 'EmberRangeSlider-base',
@@ -40,11 +30,11 @@ export default Ember.Component.extend({
   startHandleClassName: 'EmberRangeSlider-handle--start',
   endHandleClassName: 'EmberRangeSlider-handle--end',
 
-  startHandleFullClassName: computed('handleClassName', 'startHandleClassName', function() {
+  startHandleFullClassName: computed('handleClassName', 'startHandleClassName', function () {
     return `${this.get('handleClassName')} ${this.get('startHandleClassName')}`;
   }),
 
-  endHandleFullClassName: computed('handleClassName', 'endHandleClassName', function() {
+  endHandleFullClassName: computed('handleClassName', 'endHandleClassName', function () {
     return `${this.get('handleClassName')} ${this.get('endHandleClassName')}`;
   }),
 
