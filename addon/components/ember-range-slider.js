@@ -22,6 +22,23 @@ export default Ember.Component.extend({
   start: null,
   end: null,
 
+<<<<<<< HEAD
+=======
+  scale: 'linear',
+  scaleStrategies,
+
+  /**
+   *  If true, the second value will be parsed even if selected only one.
+   */
+  forceValueObtaining: false,
+
+  baseClassName: 'EmberRangeSlider-base',
+  activeRegionClassName: 'EmberRangeSlider-active',
+  handleClassName: 'EmberRangeSlider-handle',
+  startHandleClassName: 'EmberRangeSlider-handle--start',
+  endHandleClassName: 'EmberRangeSlider-handle--end',
+
+>>>>>>> a8ed1b8... Created properties for following classNames: base, active, handle, start handle and end handle.
   /* Set these properties to use another component for the
    * start and/or end slider handles
    */
@@ -132,28 +149,28 @@ export default Ember.Component.extend({
    * for this component. If you subclass and provide your own template with
    * different class names, override these methods.
    */
-  getSliderHandleFromEventTarget(eventTarget) {
-    return Ember.$(eventTarget).closest('.EmberRangeSlider-handle');
-  },
+   getSliderHandleFromEventTarget(eventTarget) {
+     return Ember.$(eventTarget).closest(`.${this.get('handleClassName')}`);
+   },
 
-  isStartHandle($sliderHandle) {
-    return $sliderHandle.hasClass('EmberRangeSlider-handle--start');
-  },
+   isStartHandle($sliderHandle) {
+     return $sliderHandle.hasClass(this.get('startHandleClassName'));
+   },
 
-  isEndHandle($sliderHandle) {
-    return $sliderHandle.hasClass('EmberRangeSlider-handle--end');
-  },
+   isEndHandle($sliderHandle) {
+     return $sliderHandle.hasClass(this.get('endHandleClassName'));
+   },
 
   isSliderBase($element) {
-    return $element.hasClass('EmberRangeSlider-base');
+    return $element.hasClass(this.get('baseClassName'));
   },
 
   isSliderActiveRegion($element) {
-    return $element.hasClass('EmberRangeSlider-active');
+    return $element.hasClass(this.get('activeRegionClassName'));
   },
 
   getPercentageFromX(x) {
-    let $sliderBase = this.$('.EmberRangeSlider-base');
+    let $sliderBase = this.$(`.${this.get('baseClassName')}`);
     let baseLeft = $sliderBase.offset().left;
     let baseRight = baseLeft + $sliderBase.width();
     return ((x - baseLeft) / (baseRight - baseLeft)) * 100;
