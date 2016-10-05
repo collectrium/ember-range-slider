@@ -22,6 +22,9 @@ export default Ember.Component.extend({
   start: null,
   end: null,
 
+  forceValueObtaining: false,
+  onlyIntegers: false,
+
   baseClassName: 'EmberRangeSlider-base',
   activeRegionClassName: 'EmberRangeSlider-active',
   handleClassName: 'EmberRangeSlider-handle',
@@ -179,7 +182,10 @@ export default Ember.Component.extend({
   getValueFromPercentage(percentage) {
     let min = this.get('min');
     let max = this.get('max');
-    return (max - min) * (percentage / 100) + min;
+    let onlyIntegers = this.get('onlyIntegers');
+
+    let value = (max - min) * (percentage / 100) + min;
+    return (onlyIntegers) ? Math.round(value) : value;
   },
 
   /* press events precede pan events, so we can use this to keep track of
@@ -260,10 +266,12 @@ export default Ember.Component.extend({
   },
 
   sendRangeChanged() {
-    this.sendAction('rangeChanged', {
-      start: this.getValueFromPercentage(this.get('startPercentage')),
-      end: this.getValueFromPercentage(this.get('endPercentage'))
-    });
+    let startPercentage = this.get('startPercentage');
+    let endPercentage = this.get('endPercentage');
+    let forceValueObtaining = this.get('forceValueObtaining');
+    let start = (startPercentage || forceValueObtaining) ? this.getValueFromPercentage(startPercentage) : this.get('start');
+    let end = ((100 - endPercentage) || forceValueObtaining) ? this.getValueFromPercentage(endPercentage) : this.get('end');
+    this.sendAction('rangeChanged', { start, end });
   },
 
   startSliding() {
