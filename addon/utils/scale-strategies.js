@@ -41,8 +41,7 @@ const scaleStrategies = {
           return zeroPointPercentage - valueAtLeftHalf;
         }
       } else {
-        console.error('Not implemented yet.');
-        return scaleStrategies.linear.getPercentage(min, max, value);
+        return 100 - scaleStrategies.logarithmic.getPercentage(-min, -max, -value);
       }
     },
 
