@@ -4,6 +4,8 @@
 module.exports = {
   name: 'ember-range-slider',
   included: function(app) {
-    app.import(app.bowerDirectory + '/hammerjs/hammer.js');
+    if (!process.env.EMBER_CLI_FASTBOOT) {
+      app.import(app.bowerDirectory + '/hammerjs/hammer.js');
+    }
   }
 };

@@ -22,6 +22,20 @@ export default Ember.Component.extend({
   start: null,
   end: null,
 
+  baseClassName: 'EmberRangeSlider-base',
+  activeRegionClassName: 'EmberRangeSlider-active',
+  handleClassName: 'EmberRangeSlider-handle',
+  startHandleClassName: 'EmberRangeSlider-handle--start',
+  endHandleClassName: 'EmberRangeSlider-handle--end',
+
+  startHandleFullClassName: computed('handleClassName', 'startHandleClassName', function () {
+    return `${this.get('handleClassName')} ${this.get('startHandleClassName')}`;
+  }),
+
+  endHandleFullClassName: computed('handleClassName', 'endHandleClassName', function () {
+    return `${this.get('handleClassName')} ${this.get('endHandleClassName')}`;
+  }),
+
   /* Set these properties to use another component for the
    * start and/or end slider handles
    */
@@ -133,27 +147,27 @@ export default Ember.Component.extend({
    * different class names, override these methods.
    */
   getSliderHandleFromEventTarget(eventTarget) {
-    return Ember.$(eventTarget).closest('.EmberRangeSlider-handle');
+    return Ember.$(eventTarget).closest(`.${this.get('handleClassName')}`);
   },
 
   isStartHandle($sliderHandle) {
-    return $sliderHandle.hasClass('EmberRangeSlider-handle--start');
+    return $sliderHandle.hasClass(this.get('startHandleClassName'));
   },
 
   isEndHandle($sliderHandle) {
-    return $sliderHandle.hasClass('EmberRangeSlider-handle--end');
+    return $sliderHandle.hasClass(this.get('endHandleClassName'));
   },
 
   isSliderBase($element) {
-    return $element.hasClass('EmberRangeSlider-base');
+    return $element.hasClass(this.get('baseClassName'));
   },
 
   isSliderActiveRegion($element) {
-    return $element.hasClass('EmberRangeSlider-active');
+    return $element.hasClass(this.get('activeRegionClassName'));
   },
 
   getPercentageFromX(x) {
-    let $sliderBase = this.$('.EmberRangeSlider-base');
+    let $sliderBase = this.$(`.${this.get('baseClassName')}`);
     let baseLeft = $sliderBase.offset().left;
     let baseRight = baseLeft + $sliderBase.width();
     return ((x - baseLeft) / (baseRight - baseLeft)) * 100;
