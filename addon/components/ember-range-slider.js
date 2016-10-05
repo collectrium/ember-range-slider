@@ -22,8 +22,6 @@ export default Ember.Component.extend({
   start: null,
   end: null,
 
-  isDisabled: false,
-
   baseClassName: 'EmberRangeSlider-base',
   activeRegionClassName: 'EmberRangeSlider-active',
   handleClassName: 'EmberRangeSlider-handle',
