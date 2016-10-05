@@ -193,17 +193,13 @@ export default Ember.Component.extend({
   getValueFromPercentage(percentage) {
     const min = get(this, 'min');
     const max = get(this, 'max');
+    const onlyIntegers = get(this, 'onlyIntegers');
 
-    const magnettedPercentage = Math.round(percentage);
-    if (magnettedPercentage === 0) {
-      return min;
-    } else if (magnettedPercentage === 100) {
-      return max;
-    } else {
-      const scale = get(this, 'scale');
-      const strategy = get(this, 'scaleStrategies')[scale];
-      return strategy.getValue(min, max, percentage);
-    }
+    const scale = get(this, 'scale');
+    const strategy = get(this, 'scaleStrategies')[scale];
+
+    const value = strategy.getValue(min, max, percentage);
+    return (onlyIntegers) ? Math.round(value) : value;
   },
 
   /* press events precede pan events, so we can use this to keep track of
