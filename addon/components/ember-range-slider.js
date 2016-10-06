@@ -131,7 +131,10 @@ export default Ember.Component.extend({
      const isSlidingStartHandle = get(this, 'isSlidingStartHandle');
 
      if (!isSlidingStartHandle) {
-       return get(this, 'startPercentage');
+       const startPercentage = get(this, 'startPercentage');
+       set(this, 'mockStartPercentage', startPercentage);
+       return startPercentage;
+
      } else {
        return get(this, 'mockStartPercentage');
      }
@@ -140,7 +143,9 @@ export default Ember.Component.extend({
      const isSlidingEndHandle = get(this, 'isSlidingEndHandle');
 
      if (!isSlidingEndHandle) {
-       return get(this, 'endPercentage');
+       const endPercentage = get(this, 'endPercentage');
+       set(this, 'mockEndPercentage', endPercentage);
+       return endPercentage;
      } else {
        return get(this, 'mockEndPercentage');
      }
