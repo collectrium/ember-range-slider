@@ -72,8 +72,13 @@ export default Ember.Component.extend({
        const value = isBlank(start) ? min : start;
 
        const percentage = strategy.getPercentage(min, max, value);
+       const limitedPercentage = constrainToBetween(percentage, 0, 100);
 
-       return constrainToBetween(percentage, 0, 100);
+       if (!get(this, 'isSlidingStartHandle')) {
+         set(this, 'mockStartPercentage', limitedPercentage);
+       }
+
+       return limitedPercentage;
      },
      set(key, percentage) {
        const updatedStart = this.getValueFromPercentage(percentage);
@@ -96,8 +101,13 @@ export default Ember.Component.extend({
        const value = isBlank(end) ? max : end;
 
        const percentage = strategy.getPercentage(min, max, value);
+       const limitedPercentage = constrainToBetween(percentage, 0, 100);
 
-       return constrainToBetween(percentage, 0, 100);
+       if (!get(this, 'isSlidingEndHandle')) {
+         set(this, 'mockEndPercentage', limitedPercentage);
+       }
+
+       return limitedPercentage;
      },
      set(key, percentage) {
        const updatedEnd = this.getValueFromPercentage(percentage);
@@ -124,7 +134,6 @@ export default Ember.Component.extend({
        const startPercentage = get(this, 'startPercentage');
        set(this, 'mockStartPercentage', startPercentage);
        return startPercentage;
-
      } else {
        return get(this, 'mockStartPercentage');
      }
