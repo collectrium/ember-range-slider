@@ -127,7 +127,7 @@ export default Ember.Component.extend({
    mockStartPercentage: null,
    mockEndPercentage: null,
 
-   currentStartPercentage: computed('isSlidingStartHandle', 'mockStartPercentage', function() {
+   currentStartPercentage: computed('isSlidingStartHandle', 'startPercentage', 'mockStartPercentage', function() {
      const isSlidingStartHandle = get(this, 'isSlidingStartHandle');
 
      if (!isSlidingStartHandle) {
@@ -136,7 +136,7 @@ export default Ember.Component.extend({
        return get(this, 'mockStartPercentage');
      }
    }),
-   currentEndPercentage: computed('isSlidingEndHandle', 'mockEndPercentage', function() {
+   currentEndPercentage: computed('isSlidingEndHandle', 'endPercentage', 'mockEndPercentage', function() {
      const isSlidingEndHandle = get(this, 'isSlidingEndHandle');
 
      if (!isSlidingEndHandle) {
