@@ -134,10 +134,6 @@ export default Ember.Component.extend({
        const startPercentage = get(this, 'startPercentage');
        set(this, 'mockStartPercentage', startPercentage);
        return startPercentage;
-<<<<<<< HEAD
-=======
-
->>>>>>> 426cd3a... First try to fix a bug with slightly moving handle after user frees handler
      } else {
        return get(this, 'mockStartPercentage');
      }
