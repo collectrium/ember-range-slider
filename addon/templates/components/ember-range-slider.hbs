@@ -1,10 +1,12 @@
 <div class={{baseClassName}}></div>
 <div class={{activeRegionClassName}} style={{activeRangeStyle}}></div>
 {{component startHandleComponentKey
+            percentage=currentStartPercentage
             class=startHandleFullClassName
             isSliding=isSlidingStartHandle
             style=startHandleStyle}}
 {{component endHandleComponentKey
+            percentage=currentEndPercentage
             class=endHandleFullClassName
             isSliding=isSlidingEndHandle
             style=endHandleStyle}}
