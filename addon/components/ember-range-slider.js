@@ -3,7 +3,7 @@ import Ember from 'ember';
 import layout from '../templates/components/ember-range-slider';
 import scaleStrategies from '../utils/scale-strategies';
 
-const { computed, isBlank, run, get } = Ember;
+const { computed, isBlank, run, get, set } = Ember;
 const { htmlSafe } = Ember.String;
 
 function constrainToBetween(value, min, max) {
@@ -77,6 +77,7 @@ export default Ember.Component.extend({
      },
      set(key, percentage) {
        const updatedStart = this.getValueFromPercentage(percentage);
+       set(this, 'mockStartPercentage', percentage);
        this.sendAction('rangeChanging', {
          start: updatedStart,
          end: get(this, 'end')
@@ -100,6 +101,7 @@ export default Ember.Component.extend({
      },
      set(key, percentage) {
        const updatedEnd = this.getValueFromPercentage(percentage);
+       set(this, 'mockEndPercentage', percentage);
        this.sendAction('rangeChanging', {
          start: get(this, 'start'),
          end: updatedEnd
@@ -108,20 +110,51 @@ export default Ember.Component.extend({
      }
    }),
 
+   /**
+    *  These values is showing when handle is sliding.
+    *  Used to prevent yanking of handle.
+    */
+   mockStartPercentage: null,
+   mockEndPercentage: null,
+
+   currentStartPercentage: computed('isSlidingStartHandle', 'startPercentage', 'mockStartPercentage', function() {
+     const isSlidingStartHandle = get(this, 'isSlidingStartHandle');
+
+     if (!isSlidingStartHandle) {
+       const startPercentage = get(this, 'startPercentage');
+       set(this, 'mockStartPercentage', startPercentage);
+       return startPercentage;
+
+     } else {
+       return get(this, 'mockStartPercentage');
+     }
+   }),
+   currentEndPercentage: computed('isSlidingEndHandle', 'endPercentage', 'mockEndPercentage', function() {
+     const isSlidingEndHandle = get(this, 'isSlidingEndHandle');
+
+     if (!isSlidingEndHandle) {
+       const endPercentage = get(this, 'endPercentage');
+       set(this, 'mockEndPercentage', endPercentage);
+       return endPercentage;
+     } else {
+       return get(this, 'mockEndPercentage');
+     }
+   }),
+
   /* These three CPs are used for dynamic binding in the handlebars template.
    */
-  activeRangeStyle: computed('startPercentage', 'endPercentage', function() {
-    let startPercentage = this.get('startPercentage');
-    let endPercentage = this.get('endPercentage');
+  activeRangeStyle: computed('currentStartPercentage', 'currentEndPercentage', function() {
+    let startPercentage = this.get('currentStartPercentage');
+    let endPercentage = this.get('currentEndPercentage');
     return htmlSafe(`left: ${startPercentage}%; right: ${100 - endPercentage}%`);
   }),
-  startHandleStyle: computed('startPercentage', function() {
-    let startPercentage = this.get('startPercentage');
+  startHandleStyle: computed('currentStartPercentage', function() {
+    let startPercentage = this.get('currentStartPercentage');
     startPercentage = Math.round(startPercentage * 1000) / 1000;
     return htmlSafe(`left: ${startPercentage}%`);
   }),
-  endHandleStyle: computed('endPercentage', function() {
-    let endPercentage = this.get('endPercentage');
+  endHandleStyle: computed('currentEndPercentage', function() {
+    let endPercentage = this.get('currentEndPercentage');
     endPercentage = Math.round(endPercentage * 1000) / 1000;
     return htmlSafe(`left: ${endPercentage}%`);
   }),
