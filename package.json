@@ -1,6 +1,6 @@
 {
   "name": "ember-range-slider",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A horizontal slider component with two handles that allows for visually selecting a range from within a specified min and max.",
   "directories": {
     "doc": "doc",
