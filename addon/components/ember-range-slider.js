@@ -158,14 +158,26 @@ export default Ember.Component.extend({
     return htmlSafe(`left: ${startPercentage}%; right: ${100 - endPercentage}%`);
   }),
   startHandleStyle: computed('currentStartPercentage', function() {
-    let startPercentage = this.get('currentStartPercentage');
+    let startPercentage = this.get('currentStartPercentage'),
+        endPercentage = this.get('currentEndPercentage');
     startPercentage = Math.round(startPercentage * 1000) / 1000;
-    return htmlSafe(`left: ${startPercentage}%`);
+    endPercentage = Math.round(endPercentage * 1000) / 1000;
+    if (startPercentage == "100" && endPercentage == "100") {
+      return htmlSafe(`left: ${startPercentage}%; z-index: 1`);
+    } else {
+      return htmlSafe(`left: ${startPercentage}%`);
+    }
   }),
   endHandleStyle: computed('currentEndPercentage', function() {
-    let endPercentage = this.get('currentEndPercentage');
+    let endPercentage = this.get('currentEndPercentage'),
+        startPercentage = this.get('currentStartPercentage');
+    startPercentage = Math.round(startPercentage * 1000) / 1000;
     endPercentage = Math.round(endPercentage * 1000) / 1000;
-    return htmlSafe(`left: ${endPercentage}%`);
+    if (startPercentage == "0" && endPercentage == "0") {
+      return htmlSafe(`left: ${endPercentage}%; z-index: 1`);
+    } else {
+      return htmlSafe(`left: ${endPercentage}%`);
+    }
   }),
 
   didInsertElement() {
