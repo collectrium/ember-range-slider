@@ -13,7 +13,7 @@
   },
   "repository": "https://github.com/collectrium/ember-range-slider.git",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": "^8"
   },
   "author": "Yapp Labs",
   "license": "MIT",
