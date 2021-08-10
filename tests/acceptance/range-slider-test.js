@@ -121,6 +121,79 @@ test('slide end handle interaction with rangeChanging action', function(assert) 
   });
 });
 
+test('check when two ranges in start positions', function(assert) {
+  visit('/');
+  andThen(function() {
+    expectWithin(assert, 91, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 242, endHandlePositionRounded('.example-1'), 1, 'before interaction end handle position');
+    expectWithin(assert, 3000, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 6000, boundEndTextValue('.example-1'), 1, 'before interaction bound end text');
+  });
+  rawMouseDown(".example-1 .EmberRangeSlider-handle--end");
+  rawMouseMove(".example-1 .EmberRangeSlider-handle--end", 101, 0);
+  andThen(function() {
+    expectWithin(assert, 91, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 343, endHandlePositionRounded('.example-1'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 3000, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 8000, boundEndTextValue('.example-1'), 25, 'after mousemove higher bound end text');
+  });
+  rawMouseUp(".example-1 .EmberRangeSlider-handle--end");
+  rawMouseDown(".example-1 .EmberRangeSlider-handle--start");
+  rawMouseMove(".example-1 .EmberRangeSlider-handle--start", 253, 0);
+  andThen(function() {
+    expectWithin(assert, 343, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 343, endHandlePositionRounded('.example-1'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 8000, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 8000, boundEndTextValue('.example-1'), 25, 'after mousemove higher bound end text');
+  });
+  rawMouseUp(".example-1 .EmberRangeSlider-handle--start");
+  rawMouseDown(".example-1 .EmberRangeSlider-handle--start");
+  rawMouseMove(".example-1 .EmberRangeSlider-handle--start", -150, 0);
+  andThen(function() {
+    expectWithin(assert, 193, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 343, endHandlePositionRounded('.example-1'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 5026, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 8000, boundEndTextValue('.example-1'), 25, 'after mousemove higher bound end text');
+  });
+});
+
+test('check when two ranges in end positions', function(assert) {
+  visit('/');
+  andThen(function() {
+    expectWithin(assert, 91, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 242, endHandlePositionRounded('.example-1'), 1, 'before interaction end handle position');
+    expectWithin(assert, 3000, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 6000, boundEndTextValue('.example-1'), 1, 'before interaction bound end text');
+  });
+  rawMouseDown(".example-1 .EmberRangeSlider-handle--start");
+  rawMouseMove(".example-1 .EmberRangeSlider-handle--start", -91, 0);
+  andThen(function() {
+    expectWithin(assert, 0, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 242, endHandlePositionRounded('.example-1'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 1200, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 6000, boundEndTextValue('.example-1'), 25, 'after mousemove higher bound end text');
+  });
+  rawMouseUp(".example-1 .EmberRangeSlider-handle--start");
+  rawMouseDown(".example-1 .EmberRangeSlider-handle--end");
+  rawMouseMove(".example-1 .EmberRangeSlider-handle--end", -242, 0);
+  andThen(function() {
+    expectWithin(assert, 0, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 0, endHandlePositionRounded('.example-1'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 1200, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 1200, boundEndTextValue('.example-1'), 25, 'after mousemove higher bound end text');
+  });
+  rawMouseUp(".example-1 .EmberRangeSlider-handle--end");
+  rawMouseDown(".example-1 .EmberRangeSlider-handle--end");
+  rawMouseMove(".example-1 .EmberRangeSlider-handle--end", 150, 0);
+  andThen(function() {
+    expectWithin(assert, 0, startHandlePositionRounded('.example-1'), 1, 'before interaction start handle position');
+    expectWithin(assert, 150, endHandlePositionRounded('.example-1'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 1200, boundStartTextValue('.example-1'), 1, 'before interaction bound start text');
+    expectWithin(assert, 4173, boundEndTextValue('.example-1'), 25, 'after mousemove higher bound end text');
+  });
+
+});
+
 test('tap interaction', function(assert) {
   visit('/');
   andThen(function() {
@@ -197,7 +270,7 @@ test('slide end handle interaction with rangeChanged action', function(assert) {
     expectWithin(assert, 6000, boundEndTextValue('.example-2'), 25, 'after mousemove lower bound end text');
     expectIsSliding(assert, '.example-2', 'true', 'after mousemove lower');
   });
-  rawMouseMove(".example-2 .EmberRangeSlider-handle--end", 20, 0);
+  rawMouseMove(".example-2 .EmberRangeSlider-handle--end", 19, 0);
   andThen(function() {
     expectWithin(assert, 250, endHandlePositionRounded('.example-2'), 1, 'after mousemove higher end handle position');
     expectWithin(assert, 6000, boundEndTextValue('.example-2'), 25, 'after mousemove higher bound end text');
@@ -264,7 +337,7 @@ test('bound to text fields', function(assert) {
     expectWithin(assert, 2796, boundStartTextValue('.example-4'), 25, 'after slide end handle, bound start text');
     expectWithin(assert, 2796, boundStartInputValue('.example-4'), 25, 'after slide end handle, bound start input');
     expectWithin(assert, 172, endHandlePositionRounded('.example-4'), 1, 'after slide end handle, end handle position');
-    expectWithin(assert, 4600, boundEndTextValue('.example-4'), 1, 'after slide end handle, bound end text');
-    expectWithin(assert, 4600, boundEndInputValue('.example-4'), 25, 'after slide end handle, bound end input');
+    expectWithin(assert, 4590, boundEndTextValue('.example-4'), 1, 'after slide end handle, bound end text');
+    expectWithin(assert, 4590, boundEndInputValue('.example-4'), 25, 'after slide end handle, bound end input');
   });
 });

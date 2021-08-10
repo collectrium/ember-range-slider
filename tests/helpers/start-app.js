@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import registerAcceptanceTestHelpers from './yapplabs-raw-events/register-acceptance-test-helpers';
+import registerAcceptanceTestHelpers from './raw-events/register-acceptance-test-helpers';
 import Application from '../../app';
 import config from '../../config/environment';
 
