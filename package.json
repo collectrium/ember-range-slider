@@ -12,14 +12,11 @@
     "test": "ember test"
   },
   "repository": "https://github.com/collectrium/ember-range-slider.git",
-  "engines": {
-    "node": "^8"
-  },
   "author": "Yapp Labs",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "2.2.0",
-    "ember-cli": "1.13.13",
+    "ember-cli": "2.13.3",
     "ember-cli-app-version": "1.0.0",
     "ember-cli-dependency-checker": "1.1.0",
     "ember-cli-github-pages": "0.0.6",
@@ -34,6 +31,7 @@
     "ember-disable-prototype-extensions": "1.0.0",
     "ember-disable-proxy-controllers": "1.0.1",
     "ember-export-application-global": "1.0.4",
+    "ember-load-initializers": "^2.1.2",
     "ember-one-way-input": "0.4.0",
     "ember-try": "0.0.8"
   },
@@ -42,7 +40,8 @@
   ],
   "dependencies": {
     "ember-cli-babel": "5.1.5",
-    "ember-cli-htmlbars": "1.1.1"
+    "ember-cli-htmlbars": "1.1.1",
+    "loader.js": "^4.7.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
