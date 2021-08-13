@@ -49,7 +49,7 @@ The `isSlidingChanged` action is fired with `true` as the user begins sliding a 
 ### Installation
 
 * `git clone` this repository
-* `npm install`
+* `yarn install`
 * `bower install`
 
 ### Running Tests
