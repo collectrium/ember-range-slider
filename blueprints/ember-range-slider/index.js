@@ -1,6 +1,6 @@
 module.exports = {
 
-  name: 'ember-range-slider',
+  name: '@upsilon/ember-range-slider',
 
   normalizeEntityName: function() {},
 

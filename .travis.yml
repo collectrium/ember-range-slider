@@ -1,19 +1,25 @@
 ---
 language: node_js
 node_js:
-  - "0.12"
+  - "10"
 
 sudo: false
 
 cache:
+  yarn: true
   directories:
     - node_modules
+    addons:
+      chrome: stable
+
+apt:
+  packages:
+    - chromium-chromedriver
 
 env:
   - EMBER_TRY_SCENARIO=default
-  - EMBER_TRY_SCENARIO=1.13.11
-  - EMBER_TRY_SCENARIO=2.0.2
-  - EMBER_TRY_SCENARIO=2.1.0
+  - EMBER_TRY_SCENARIO=2.13.3
+  - EMBER_TRY_SCENARIO=2.16.2
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
@@ -24,13 +30,13 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
+  - ln --symbolic /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - npm install -g bower
-  - npm install
+  - npm install -g yarn
+  - yarn install
   - bower install
 
 script:
