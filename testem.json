@@ -3,16 +3,5 @@
   "test_page": "tests/index.html?hidepassed",
   "disable_watching": true,
   "launch_in_ci": ["Chrome"],
-  "launch_in_dev": ["Chrome"],
-  "browser_args": {
-    "Chrome": [
-      "--disable-gpu",
-      "--disable-web-security",
-      "--headless",
-      "--incognito",
-      "--no-sandbox",
-      "--remote-debugging-address=0.0.0.0",
-      "--remote-debugging-port=9222"
-    ]
-  }
+  "launch_in_dev": ["Chrome"]
 }
