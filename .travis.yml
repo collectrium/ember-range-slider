@@ -9,12 +9,6 @@ cache:
   yarn: true
   directories:
     - node_modules
-    addons:
-      chrome: stable
-
-apt:
-  packages:
-    - chromium-chromedriver
 
 env:
   - EMBER_TRY_SCENARIO=default
@@ -29,9 +23,17 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-beta
     - env: EMBER_TRY_SCENARIO=ember-canary
 
-before_install:
+dist: xenial
+
+addons:
+  chrome: stable
+  apt:
+    packages:
+      - chromium-chromedriver
+
+before_script:
   - ln --symbolic /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
-  - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - npm install -g bower
@@ -40,4 +42,4 @@ install:
   - bower install
 
 script:
-  - ember try $EMBER_TRY_SCENARIO test
+  - ember try:each
