@@ -46,7 +46,7 @@ export function activeRangeRounded(scope) {
   let width = +coordinates(scope).emberRangeSliderActiveWidth;
   return {
     start: Math.round((left / +coordinates(scope).emberRangeSliderWidth) * 100),
-    end: Math.ceil(
+    end: Math.round(
       ((left + width) / +coordinates(scope).emberRangeSliderWidth) * 100
     ),
   };
