@@ -26,6 +26,10 @@ View a live demo here: [http://collectrium.github.io/ember-range-slider/](http:/
 }}
 ```
 
+## Using
+
+import EmberRangeSlider from '@upsilon/ember-range-slider/components/ember-range-slider';
+
 ## Data down
 
 `min` and `max` are numeric values that define the values associated with the left and right edge of the slider.
@@ -45,16 +49,14 @@ The `isSlidingChanged` action is fired with `true` as the user begins sliding a 
 ### Installation
 
 * `git clone` this repository
-* `npm install`
+* `yarn install`
 * `bower install`
 
 ### Running Tests
 
-* `ember try:testall`
+* `ember try:each`
 * `ember test`
 * `ember test --server`
-
-*NOTE:* Tests currently run successfully in-browser, but not headless in PhantomJS due to an error with `new MouseEvent`. It would be fantastic to fix this.
 
 ### Running the dummy app
 
