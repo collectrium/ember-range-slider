@@ -272,13 +272,13 @@ test('slide end handle interaction with rangeChanged action', function(assert) {
   });
   rawMouseMove(".example-2 .EmberRangeSlider", ".example-2 .EmberRangeSlider-handle--end", 13, 0);
   andThen(function() {
-    expectWithin(assert, 72, endHandlePositionRounded('.example-2'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 73, endHandlePositionRounded('.example-2'), 1, 'after mousemove higher end handle position');
     expectWithin(assert, 6000, boundEndTextValue('.example-2'), 50, 'after mousemove higher bound end text');
     expectIsSliding(assert, '.example-2', 'true', 'after mousemove higher');
   });
   rawMouseUp(".example-2 .EmberRangeSlider", ".example-2 .EmberRangeSlider-handle--end");
   andThen(function() {
-    expectWithin(assert, 72, endHandlePositionRounded('.example-2'), 1, 'after mouseup end handle position');
+    expectWithin(assert, 73, endHandlePositionRounded('.example-2'), 1, 'after mouseup end handle position');
     expectWithin(assert, 6150, boundEndTextValue('.example-2'), 50, 'after mouseup bound end text');
     expectIsSliding(assert, '.example-2', 'false', 'after mouseup');
   });
