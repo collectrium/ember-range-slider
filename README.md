@@ -1,6 +1,6 @@
 # Ember Range Slider [![Build Status](https://travis-ci.org/collectrium/ember-range-slider.svg?branch=master)](https://travis-ci.org/collectrium/ember-range-slider) [![Ember Observer Score](http://emberobserver.com/badges/ember-range-slider.svg)](http://emberobserver.com/addons/ember-range-slider)
 
-This ember-cli addon provides a horizontal slider component with two handles that allows for visually selecting a range from within a specified min and max.
+Provides a horizontal slider component with two handles that allows for visually selecting a range from within a specified min and max.
 
 ![Animated GIF of ember-range-slider in action](http://f.cl.ly/items/2E3B3d44330C0S3J0H31/range-slider.gif)
 
