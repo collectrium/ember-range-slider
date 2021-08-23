@@ -1,16 +1,13 @@
 module.exports = {
-
   name: '@upsilon/ember-range-slider',
 
   normalizeEntityName: function() {},
 
   afterInstall: function() {
     var bowerPackages = [
-        { name: 'hammerjs', target: 'hammerjs/hammer.js#189098ff7736' }
+        { name: 'hammerjs', target: '^2.0.8' }
       ];
 
-    return this.addBowerPackagesToProject(bowerPackages);
+    return this.addPackagesToProject(bowerPackages);
   }
-
-
 };
