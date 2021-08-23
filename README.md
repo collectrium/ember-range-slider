@@ -22,6 +22,7 @@ View a live demo here: [http://collectrium.github.io/ember-range-slider/](http:/
   end=end
   rangeChanging=(action 'rangeSliderChanging')
   rangeChanged=(action 'rangeChanged')
+  roundingHandler=(action 'roundingNearestInteger')
   isSlidingChanged=(action (mut isSliding))
 }}
 ```

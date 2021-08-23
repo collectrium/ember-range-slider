@@ -105,3 +105,22 @@
     <li>end: {{example5RangeEnd}}</li>
   </ul>
 </div>
+
+<div class='example example-6'>
+  <p>Example using "roundingHandler" action to pass a rounding function.</p>
+  {{code-snippet name='example6.hbs'}}
+  {{!-- BEGIN-SNIPPET example6 --}}
+  {{ember-range-slider
+    min=1000
+    max=10000
+    start=example6RangeStart
+    end=example6RangeEnd
+    rangeChanging=(action 'example6RangeSliderChanging')
+    roundingHandler=(action 'example6RoundingHandle')
+  }}
+  {{!-- END-SNIPPET --}}
+  <ul>
+    <li>start: {{example6RangeStart}}</li>
+    <li>end: {{example6RangeEnd}}</li>
+  </ul>
+</div>

@@ -26,6 +26,7 @@ export default Ember.Component.extend({
   scale: 'linear',
   scaleStrategies,
 
+  roundingHandler: ( value ) => value,
   onlyIntegers: false,
 
   baseClassName: 'EmberRangeSlider-base',
@@ -247,11 +248,12 @@ export default Ember.Component.extend({
     const min = get(this, 'min');
     const max = get(this, 'max');
     const onlyIntegers = get(this, 'onlyIntegers');
+    const roundingHandler = get(this, 'roundingHandler');
 
     const scale = get(this, 'scale');
     const strategy = get(this, 'scaleStrategies')[scale];
 
-    const value = strategy.getValue(min, max, percentage);
+    const value = roundingHandler(strategy.getValue(min, max, percentage));
     return (onlyIntegers) ? Math.round(value) : value;
   },
 
