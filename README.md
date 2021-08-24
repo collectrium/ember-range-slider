@@ -45,6 +45,8 @@ The `rangeChanged` action is fired with start and end values when a range change
 
 The `isSlidingChanged` action is fired with `true` as the user begins sliding a handle and again with `false` when the user releases the handle.
 
+The `roundingHandler` action is executed with a start and end value, continuously enclosing it in a rounding function and returning a new value as the user moves the handle over the range.
+
 ## Development Setup
 
 ### Installation
