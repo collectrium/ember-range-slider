@@ -284,6 +284,64 @@ test('slide end handle interaction with rangeChanged action', function(assert) {
   });
 });
 
+
+test('slide start handle interaction with roundingHandler action', function(assert) {
+  visit('/');
+  andThen(function() {
+    expectWithin(assert, 22, startHandlePositionRounded('.example-6'), 1, 'before interaction start handle position');
+    expectWithin(assert, 3000, boundStartTextValue('.example-6'), 1, 'before interaction bound start text');
+  });
+  rawMouseDown(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--start");
+  andThen(function() {
+    expectWithin(assert, 22, startHandlePositionRounded('.example-6'), 1, 'after mousedown start handle position');
+    expectWithin(assert, 3000, boundStartTextValue('.example-6'), 1, 'after mousedown bound start text');
+  });
+  rawMouseMove(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--start", 10, 0);
+  andThen(function() {
+    expectWithin(assert, 32, startHandlePositionRounded('.example-6'), 1, 'after mousemove lower start handle position');
+    expectWithin(assert, 3000, boundStartTextValue('.example-6'), 1, 'after mousemove lower bound start text');
+  });
+  rawMouseMove(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--start", 10, 0);
+  andThen(function() {
+    expectWithin(assert, 42, startHandlePositionRounded('.example-6'), 1, 'after mousemove lower start handle position');
+    expectWithin(assert, 4000, boundStartTextValue('.example-6'), 1, 'after mousemove lower bound start text');
+  });
+  rawMouseUp(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--start");
+  andThen(function() {
+    expectWithin(assert, 42, startHandlePositionRounded('.example-6'), 1, 'after mouseup start handle position');
+    expectWithin(assert, 4000, boundStartTextValue('.example-6'), 1, 'after mouseup bound start text');
+  });
+});
+
+test('slide end handle interaction with roundingHandler action', function(assert) {
+  visit('/');
+  andThen(function() {
+    expectWithin(assert, 56, endHandlePositionRounded('.example-6'), 1, 'before interaction end handle position');
+    expectWithin(assert, 6000, boundEndTextValue('.example-6'), 1, 'before interaction bound end text');
+  });
+  rawMouseDown(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--end");
+  andThen(function() {
+    expectWithin(assert, 56, endHandlePositionRounded('.example-6'), 1, 'after mousedown end handle position');
+    expectWithin(assert, 6000, boundEndTextValue('.example-6'), 1, 'after mousedown bound end text');
+  });
+  rawMouseMove(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--end", 4, 0);
+  andThen(function() {
+    expectWithin(assert, 60, endHandlePositionRounded('.example-6'), 1, 'after mousemove lower end handle position');
+    expectWithin(assert, 6000, boundEndTextValue('.example-6'), 1, 'after mousemove lower bound end text');
+  });
+  rawMouseMove(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--end", 15, 0);
+  andThen(function() {
+    expectWithin(assert, 75, endHandlePositionRounded('.example-6'), 1, 'after mousemove higher end handle position');
+    expectWithin(assert, 7000, boundEndTextValue('.example-6'), 1, 'after mousemove higher bound end text');
+  });
+  rawMouseUp(".example-6 .EmberRangeSlider", ".example-6 .EmberRangeSlider-handle--end");
+  andThen(function() {
+    expectWithin(assert, 75, endHandlePositionRounded('.example-6'), 1, 'after mouseup end handle position');
+    expectWithin(assert, 7000, boundEndTextValue('.example-6'), 1, 'after mouseup bound end text');
+  });
+});
+
+
 test('custom components for handles', function(assert) {
   visit('/');
   andThen(function() {
