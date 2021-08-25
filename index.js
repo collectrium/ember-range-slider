@@ -1,11 +1,25 @@
 /* jshint node: true */
-'use strict';
+"use strict";
+
+const FASTBOOT_TRANSFORMATION_OPTION = {
+  using: [
+    {
+      transformation: 'fastbootShim',
+    },
+  ],
+};
 
 module.exports = {
-  name: '@upsilon/ember-range-slider',
-  included: function(app) {
-    if (!process.env.EMBER_CLI_FASTBOOT) {
-      app.import('node_modules/' + 'hammerjs/hammer.js');
-    }
-  }
+  name: "@upsilon/ember-range-slider",
+
+  included(app) {
+    this._super.included(app);
+
+    let hasFastboot = this.project.findAddonByName('ember-cli-fastboot');
+    let importOptions = hasFastboot ? FASTBOOT_TRANSFORMATION_OPTION : {};
+    app.import(
+      'node_modules/hammerjs/hammer.js',
+      importOptions
+    );
+  },
 };
