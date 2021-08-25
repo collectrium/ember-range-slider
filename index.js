@@ -1,11 +1,12 @@
 /* jshint node: true */
-'use strict';
+"use strict";
 
 module.exports = {
-  name: '@upsilon/ember-range-slider',
-  included: function(app) {
-    if (!process.env.EMBER_CLI_FASTBOOT) {
-      app.import('node_modules/' + 'hammerjs/hammer.js');
+  name: "@upsilon/ember-range-slider",
+
+  included(app) {
+    if (typeof FastBoot !== 'undefined') {
+      app.import('node_modules/hammerjs/hammer.js');
     }
-  }
+  },
 };
