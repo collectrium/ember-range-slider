@@ -75,9 +75,9 @@
     rangeChanging=(action 'example4RangeSliderChanging')
   }}
   <div>
-    {{one-way-input value=example4RangeStart placeholder=1200 onenter=(action 'example4UpdateStart')}}
+    <input value={{example4RangeStart}} placeholder='1200' oninput={{action 'example4UpdateStart' value="target.value"}}>
     -
-    {{one-way-input value=example4RangeEnd placeholder=8000 onenter=(action 'example4UpdateEnd')}}
+    <input value={{example4RangeEnd}} placeholder='8000' oninput={{action 'example4UpdateEnd' value="target.value"}}>
   </div>
 
   {{!-- END-SNIPPET --}}
