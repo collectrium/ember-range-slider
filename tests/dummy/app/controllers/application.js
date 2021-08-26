@@ -46,10 +46,18 @@ export default Ember.Controller.extend({
       this.set('example6RangeEnd', Math.round(range.end));
     },
     example4UpdateStart(val) {
-      this.set('example4RangeStart', Math.min(Math.max(1200, val), this.get('example4RangeEnd')));
+      const endRange = this.get('example4RangeEnd')
+
+      if (val >= 1200 && val <= endRange) {
+        this.set('example4RangeStart', Math.min(Math.max(1200, val), endRange));
+      }
     },
     example4UpdateEnd(val) {
-      this.set('example4RangeEnd', Math.min(Math.max(val, this.get('example4RangeStart')), 8000));
+      const startRange = this.get('example4RangeStart')
+
+      if (val >= startRange) {
+        this.set('example4RangeEnd', Math.min(Math.max(val, startRange), 8000));
+      }
     },
     example6RoundingHandle(val) {
       return parseInt((val / 1000)) * 1000;

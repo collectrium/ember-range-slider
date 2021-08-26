@@ -361,7 +361,6 @@ test('bound to text fields', function(assert) {
     expectWithin(assert, 6000, boundEndInputValue('.example-4'), 1, 'before interaction bound end input');
   });
   fillIn('.example-4 input:eq(0)', '3200');
-  keyEvent('.example-4 input:eq(0)', 'keyup', 13); // enter
   andThen(function() {
     expectWithin(assert, 29, startHandlePositionRounded('.example-4'), 1, 'after update start text field, start handle position');
     expectWithin(assert, 3200, boundStartTextValue('.example-4'), 1, 'after update start text field, bound start text');
@@ -371,7 +370,6 @@ test('bound to text fields', function(assert) {
     expectWithin(assert, 6000, boundEndInputValue('.example-4'), 1, 'after update start text field, bound end input');
   });
   fillIn('.example-4 input:eq(1)', '5000');
-  keyEvent('.example-4 input:eq(1)', 'keyup', 13); // enter
   andThen(function() {
     expectWithin(assert, 29, startHandlePositionRounded('.example-4'), 1, 'after update end text field, start handle position');
     expectWithin(assert, 3200, boundStartTextValue('.example-4'), 1, 'after update end text field, bound start text');
