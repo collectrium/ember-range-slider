@@ -1,6 +1,6 @@
 {
   "name": "@upsilon/ember-range-slider",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A horizontal slider component with two handles that allows for visually selecting a range from within a specified min and max.",
   "directories": {
     "doc": "doc",
