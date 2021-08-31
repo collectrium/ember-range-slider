@@ -1,13 +1,6 @@
 {
   "name": "ember-wormhole",
   "dependencies": {
-    "ember": "2.16.2",
-    "ember-cli-test-loader": "0.2.2",
-    "ember-qunit": "1.0.0",
-    "jquery": "3.2.1",
-    "qunit": "1.23.1"
-  },
-  "resolutions": {
-    "ember": "2.16.2"
+    "ember": "2.18.2"
   }
 }
